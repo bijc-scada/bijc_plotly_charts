@@ -30,10 +30,10 @@ public class Bijc3dCharts  {
         .setPaletteCategory(Bijc3dChartsComponents.COMPONENT_CATEGORY)
         .setId(COMPONENT_ID)
         .setSchema(getSchema("bijc3dcharts.props.json"))
-        .setName("Display Size")
+        .setName("3D Charts")
         .setDefaultMetaName("3dCharts")
         .setResources(Bijc3dChartsComponents.BROWSER_RESOURCES)
-        .addPaletteEntry("", "Display Size", "A simple component for displaying the size of the page", null, null)
+        .addPaletteEntry("", "3D Charts", "A simple component for displaying the size of the page", null, null)
         .setIcon(new ImageIcon(Bijc3dChartsComponents.class.getResource("/size-icon.png")))
         
         .build();

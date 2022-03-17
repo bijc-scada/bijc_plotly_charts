@@ -23,22 +23,22 @@ public class Bijc3dChartsGatewayHook extends AbstractGatewayModuleHook {
     @Override
     public void setup(GatewayContext context) {
         this.gatewayContext = context;
-        if (isDebug) log.info("Setting up BIJC Display Size module.");
+        if (isDebug) log.info("Setting up BIJC 3D Charts module.");
     }
 
     @Override
     public void startup(LicenseState activationState) {
-        if (isDebug) log.info("Starting up BIJC Display Size GatewayHook!");
+        if (isDebug) log.info("Starting up BIJC 3D Charts GatewayHook!");
 
         this.perspectiveContext = PerspectiveContext.get(this.gatewayContext);
         this.componentRegistry = this.perspectiveContext.getComponentRegistry();
 
         if (this.componentRegistry != null) {
-            if (isDebug) log.info("Registering Bijc Display Size.");
+            if (isDebug) log.info("Registering Bijc 3D Charts.");
             if (isDebug) log.info(Bijc3dCharts.COMPONENT_ID);
             this.componentRegistry.registerComponent(Bijc3dCharts.DESCRIPTOR);
         } else {
-            if (isDebug) log.error("Reference to component registry not found, BIJC Display Size will fail to function!");
+            if (isDebug) log.error("Reference to component registry not found, BIJC 3D Charts will fail to function!");
         }
 
     }

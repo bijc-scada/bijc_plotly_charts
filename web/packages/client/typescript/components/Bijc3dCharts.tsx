@@ -9,13 +9,15 @@ import {
 } from '@inductiveautomation/perspective-client';
 import { observer } from 'mobx-react';
 
+import Plot from 'react-plotly.js';
+
 // the 'key' or 'id' for this component type.  Component must be registered with this EXACT key in the Java side as well
 // as on the client side.  In the client, this is done in the index file where we import and register through the
 // ComponentRegistry provided by the perspective-client API.
 export const COMPONENT_TYPE = "bijc.display.3dcharts";
 
 interface Bijc3dChartsBoxProps {
-    
+
 }
 
 @observer
@@ -27,7 +29,10 @@ export class Bijc3dCharts extends Component<ComponentProps<Bijc3dChartsBoxProps>
 
         return (
             <div {...emit()}>
-                <div />
+                <Plot
+                    data={[{ x: [1, 2, 3], y: [2, 6, 3], type: 'scatter', mode: 'lines+markers', marker: { color: 'red' } }, { type: 'bar', x: [1, 2, 3], y: [2, 5, 3] }]}
+                    layout={{ width: 320, height: 240, title: 'A Fancy Plot' }}
+                />
             </div>
         );
     }

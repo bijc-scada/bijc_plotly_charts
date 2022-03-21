@@ -16,7 +16,7 @@ import uk.co.bijc.common.Bijc3dChartsComponents;
 public class Bijc3dCharts  {
 
     // unique ID of the component which perfectly matches that provided in the javascript's ComponentMeta implementation
-    public static String COMPONENT_ID = "bijc.display.size";
+    public static String COMPONENT_ID = "bijc.display.3dcharts";
 
     public static JsonSchema getSchema(String resourcePath) {
         return JsonSchema.parse(Bijc3dChartsComponents.class.getResourceAsStream("/" + resourcePath));

@@ -14,12 +14,12 @@ public class Bijc3dChartsComponents {
         Set.of(
             new BrowserResource(
                 "bijc-3dcharts-components-js",
-                String.format("/res/%s/Bijc3dCharts.js", URL_ALIAS),
+                String.format("/res/%s/Bijc3dChartsComponents.js", URL_ALIAS),
                 BrowserResource.ResourceType.JS
             ),
             new BrowserResource(
                 "bijc-3dcharts-components-css",
-                String.format("/res/%s/Bijc3dCharts.css", URL_ALIAS),
+                String.format("/res/%s/Bijc3dChartsComponents.css", URL_ALIAS),
                 BrowserResource.ResourceType.CSS
             )
         );

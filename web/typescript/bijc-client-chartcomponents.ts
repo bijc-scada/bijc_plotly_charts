@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentRegistry} from '@inductiveautomation/perspective-client';
 import { Bijc3dCharts, Bijc3dChartsMeta } from './components/Bijc3dCharts';
 
-// export so the components are referencable, e.g. `BijcComponents['Image']
+// export so the components are referencable, e.g. `BijcCalComponents['Image']
 export {Bijc3dCharts};
 
 import '../scss/main';

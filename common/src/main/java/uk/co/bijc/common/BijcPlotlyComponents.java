@@ -4,22 +4,22 @@ import java.util.Set;
 
 import com.inductiveautomation.perspective.common.api.BrowserResource;
 
-public class Bijc3dChartsComponents {
+public class BijcPlotlyComponents {
     public static final boolean isDebug = false;
 
-    public static final String MODULE_ID = "uk.co.bijc.3dcharts";
-    public static final String URL_ALIAS = "bijc3dcharts";
+    public static final String MODULE_ID = "uk.co.bijc.plotly";
+    public static final String URL_ALIAS = "bijcplotly";
     public static final String COMPONENT_CATEGORY = "BIJC";
     public static final Set<BrowserResource> BROWSER_RESOURCES =
         Set.of(
             new BrowserResource(
-                "bijc-3dcharts-components-js",
-                String.format("/res/%s/Bijc3dChartsComponents.js", URL_ALIAS),
+                "bijc-plotly-components-js",
+                String.format("/res/%s/BijcPlotlyComponents.js", URL_ALIAS),
                 BrowserResource.ResourceType.JS
             ),
             new BrowserResource(
-                "bijc-3dcharts-components-css",
-                String.format("/res/%s/Bijc3dChartsComponents.css", URL_ALIAS),
+                "bijc-plotly-components-css",
+                String.format("/res/%s/BijcPlotlyComponents.css", URL_ALIAS),
                 BrowserResource.ResourceType.CSS
             )
         );

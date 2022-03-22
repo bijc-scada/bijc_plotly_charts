@@ -7,26 +7,26 @@ import com.inductiveautomation.ignition.designer.model.AbstractDesignerModuleHoo
 import com.inductiveautomation.ignition.designer.model.DesignerContext;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInterface;
-import uk.co.bijc.common.component.Bijc3dCharts;
-import uk.co.bijc.common.Bijc3dChartsComponents;
+import uk.co.bijc.common.component.BijcPlotly;
+import uk.co.bijc.common.BijcPlotlyComponents;
 
 
 /**
  * The 'hook' class for the designer scope of the module.  Registered in the ignitionModule configuration of the
  * root build.gradle file.
  */
-public class Bijc3dChartsDesignerHook extends AbstractDesignerModuleHook {
-    private static final LoggerEx log = LoggerEx.newBuilder().build("Bijc3dCharts");
-    private static final boolean isDebug = Bijc3dChartsComponents.isDebug;
+public class BijcPlotlyDesignerHook extends AbstractDesignerModuleHook {
+    private static final LoggerEx log = LoggerEx.newBuilder().build("BijcPlotly");
+    private static final boolean isDebug = BijcPlotlyComponents.isDebug;
 
     private DesignerContext context;
     private DesignerComponentRegistry registry;
 
     static {
-        BundleUtil.get().addBundle("bijc3dcharts", Bijc3dChartsDesignerHook.class.getClassLoader(), "bijc3dcharts");
+        BundleUtil.get().addBundle("bijcplotly", BijcPlotlyDesignerHook.class.getClassLoader(), "bijcplotly");
     }
 
-    public Bijc3dChartsDesignerHook() {
+    public BijcPlotlyDesignerHook() {
         if (isDebug) log.info("Registering Bijc Components in Designer!");
     }
 
@@ -44,8 +44,8 @@ public class Bijc3dChartsDesignerHook extends AbstractDesignerModuleHook {
         registry = pdi.getDesignerComponentRegistry();
 
         // register components to get them on the palette
-        if (isDebug) log.info(Bijc3dCharts.COMPONENT_ID);
-        registry.registerComponent(Bijc3dCharts.DESCRIPTOR);
+        if (isDebug) log.info(BijcPlotly.COMPONENT_ID);
+        registry.registerComponent(BijcPlotly.DESCRIPTOR);
     }
 
 
@@ -55,6 +55,6 @@ public class Bijc3dChartsDesignerHook extends AbstractDesignerModuleHook {
     }
 
     private void removeComponents() {
-        registry.removeComponent(Bijc3dCharts.COMPONENT_ID);
+        registry.removeComponent(BijcPlotly.COMPONENT_ID);
     }
 }

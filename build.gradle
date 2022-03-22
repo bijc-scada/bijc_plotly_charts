@@ -38,15 +38,15 @@ allprojects {
 
     ignitionModule {
         // name of the .modl file to build
-        fileName "BIJC_3dCharts_Component_v" + version
+        fileName "BIJC_plotly_Component_v" + version
 
         // what is the name of the "root" gradle project for this module.  In this case, it"s "this", aka, the project
         // specified as <repoPath>/perspective-component/build.gradle
         moduleRoot "perspective-component"
 
         // module xml configuration
-        moduleName "BIJC 3D Charts Component"
-        moduleId "uk.co.bijc.3dcharts"
+        moduleName "BIJC Plotly Component"
+        moduleId "uk.co.bijc.plotly"
         moduleVersion "${project.version}"
         moduleDescription "A component that exposes screen and page size to perspective."
         requiredIgnitionVersion "8.1.0"
@@ -66,8 +66,8 @@ allprojects {
         ]
 
         hooks = [
-                [scope: "G", hookClass: "uk.co.bijc.gateway.Bijc3dChartsGatewayHook"],
-                [scope: "D", hookClass: "uk.co.bijc.designer.Bijc3dChartsDesignerHook"]
+                [scope: "G", hookClass: "uk.co.bijc.gateway.BijcPlotlyGatewayHook"],
+                [scope: "D", hookClass: "uk.co.bijc.designer.BijcPlotlyDesignerHook"]
         ]
 
     }

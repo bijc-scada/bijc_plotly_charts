@@ -6,20 +6,20 @@ import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptorImpl;
 
-import uk.co.bijc.common.Bijc3dChartsComponents;
+import uk.co.bijc.common.BijcPlotlyComponents;
 
 
 /**
  * Describes the component to the Java registry so the gateway and designer know to look for the front end elements.
  * In a 'common' scope so that it's referencable by both gateway and designer.
  */
-public class Bijc3dCharts  {
+public class BijcPlotly  {
 
     // unique ID of the component which perfectly matches that provided in the javascript's ComponentMeta implementation
-    public static String COMPONENT_ID = "bijc.display.3dcharts";
+    public static String COMPONENT_ID = "bijc.display.plotly";
 
     public static JsonSchema getSchema(String resourcePath) {
-        return JsonSchema.parse(Bijc3dChartsComponents.class.getResourceAsStream("/" + resourcePath));
+        return JsonSchema.parse(BijcPlotlyComponents.class.getResourceAsStream("/" + resourcePath));
     }
 
     /**
@@ -27,14 +27,14 @@ public class Bijc3dCharts  {
      * build the descriptor for this one component. Icons on the component palette are optional.
      */
     public static ComponentDescriptor DESCRIPTOR = ComponentDescriptorImpl.ComponentBuilder.newBuilder()
-        .setPaletteCategory(Bijc3dChartsComponents.COMPONENT_CATEGORY)
+        .setPaletteCategory(BijcPlotlyComponents.COMPONENT_CATEGORY)
         .setId(COMPONENT_ID)
-        .setSchema(getSchema("bijc3dcharts.props.json"))
-        .setName("3D Charts")
-        .setDefaultMetaName("3dCharts")
-        .setResources(Bijc3dChartsComponents.BROWSER_RESOURCES)
-        .addPaletteEntry("", "3D Charts", "A simple component for displaying the size of the page", null, null)
-        .setIcon(new ImageIcon(Bijc3dChartsComponents.class.getResource("/size-icon.png")))
+        .setSchema(getSchema("bijcplotly.props.json"))
+        .setName("Plotly")
+        .setDefaultMetaName("plotly")
+        .setResources(BijcPlotlyComponents.BROWSER_RESOURCES)
+        .addPaletteEntry("", "Plotly", "A simple component for displaying the size of the page", null, null)
+        .setIcon(new ImageIcon(BijcPlotlyComponents.class.getResource("/size-icon.png")))
         
         .build();
 }

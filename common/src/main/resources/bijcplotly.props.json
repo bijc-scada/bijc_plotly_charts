@@ -4,21 +4,18 @@
   "properties": {
     "data": {
       "type": "array",
+      "description": "The data to be displayed on the Plotly chart",
       "default": []
     },
     "layout": {
       "type": "object",
-      "default": {
-        "title": "Chart Title"
-      }
+      "description": "The layout object for the Plotly chart",
+      "default": {}
     },
     "config": {
       "type": "object",
-      "default": {
-        "displaylogo": false,
-        "responsive": true,
-        "autosizable": true
-      }
+      "description": "The config object for the Plotly chart",
+      "default": {}
     },
     "style": {
       "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",

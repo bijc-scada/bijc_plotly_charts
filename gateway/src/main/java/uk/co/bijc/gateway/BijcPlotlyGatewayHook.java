@@ -8,13 +8,13 @@ import com.inductiveautomation.ignition.gateway.model.AbstractGatewayModuleHook;
 import com.inductiveautomation.ignition.gateway.model.GatewayContext;
 import com.inductiveautomation.perspective.common.api.ComponentRegistry;
 import com.inductiveautomation.perspective.gateway.api.PerspectiveContext;
-import uk.co.bijc.common.Bijc3dChartsComponents;
-import uk.co.bijc.common.component.Bijc3dCharts;
+import uk.co.bijc.common.BijcPlotlyComponents;
+import uk.co.bijc.common.component.BijcPlotly;
 
-public class Bijc3dChartsGatewayHook extends AbstractGatewayModuleHook {
+public class BijcPlotlyGatewayHook extends AbstractGatewayModuleHook {
 
-    private static final LoggerEx log = LoggerEx.newBuilder().build("bijc.gateway.Bijc3dChartsGateway");
-    private static final boolean isDebug = Bijc3dChartsComponents.isDebug;
+    private static final LoggerEx log = LoggerEx.newBuilder().build("bijc.gateway.BijcPlotlyGateway");
+    private static final boolean isDebug = BijcPlotlyComponents.isDebug;
 
     private GatewayContext gatewayContext;
     private PerspectiveContext perspectiveContext;
@@ -23,31 +23,31 @@ public class Bijc3dChartsGatewayHook extends AbstractGatewayModuleHook {
     @Override
     public void setup(GatewayContext context) {
         this.gatewayContext = context;
-        if (isDebug) log.info("Setting up BIJC 3D Charts module.");
+        if (isDebug) log.info("Setting up BIJC Plotly module.");
     }
 
     @Override
     public void startup(LicenseState activationState) {
-        if (isDebug) log.info("Starting up BIJC 3D Charts GatewayHook!");
+        if (isDebug) log.info("Starting up BIJC Plotly GatewayHook!");
 
         this.perspectiveContext = PerspectiveContext.get(this.gatewayContext);
         this.componentRegistry = this.perspectiveContext.getComponentRegistry();
 
         if (this.componentRegistry != null) {
-            if (isDebug) log.info("Registering Bijc 3D Charts.");
-            if (isDebug) log.info(Bijc3dCharts.COMPONENT_ID);
-            this.componentRegistry.registerComponent(Bijc3dCharts.DESCRIPTOR);
+            if (isDebug) log.info("Registering Bijc Plotly.");
+            if (isDebug) log.info(BijcPlotly.COMPONENT_ID);
+            this.componentRegistry.registerComponent(BijcPlotly.DESCRIPTOR);
         } else {
-            if (isDebug) log.error("Reference to component registry not found, BIJC 3D Charts will fail to function!");
+            if (isDebug) log.error("Reference to component registry not found, BIJC Plotly will fail to function!");
         }
 
     }
 
     @Override
     public void shutdown() {
-        if (isDebug) log.info("Shutting down Bijc3dCharts module and removing registered components.");
+        if (isDebug) log.info("Shutting down BijcPlotly module and removing registered components.");
         if (this.componentRegistry != null) {
-            this.componentRegistry.removeComponent(Bijc3dCharts.COMPONENT_ID);
+            this.componentRegistry.removeComponent(BijcPlotly.COMPONENT_ID);
         } else {
             if (isDebug) log.warn("Component registry was null, could not unregister Bijc Components.");
         }
@@ -62,7 +62,7 @@ public class Bijc3dChartsGatewayHook extends AbstractGatewayModuleHook {
     // Lets us use the route http://<gateway>/res/bijccomponents/*
     @Override
     public Optional<String> getMountPathAlias() {
-        return Optional.of(Bijc3dChartsComponents.URL_ALIAS);
+        return Optional.of(BijcPlotlyComponents.URL_ALIAS);
     }
 
     @Override

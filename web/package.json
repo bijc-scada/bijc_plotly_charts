@@ -1,9 +1,9 @@
 {
-  "name": "@bijc/3dcharts-client",
+  "name": "@bijc/plotly-client",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "typings": "dist/typings/3dcharts-client.d.ts",
+  "typings": "dist/typings/plotly-client.d.ts",
   "scripts": {
     "build": "npm run clean && npm run cleanMounted && npm run lint && webpack --mode development",
     "lint": "tslint -p tsconfig.json -c tslint.json typescript/**/*.tsx typescript/**/*.ts -t stylish",

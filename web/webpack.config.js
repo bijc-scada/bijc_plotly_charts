@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const LibName = "Bijc3dChartsComponents";
+const LibName = "BijcPlotlyComponents";
 
 function copyToResources() {
     const resourceFolder = path.resolve(__dirname, '..', 'gateway/src/main/resources/mounted/');
@@ -38,7 +38,7 @@ function copyToResources() {
 
 const config = {
     entry: {
-        Bijc3dChartsComponents: path.join(__dirname, "./typescript/bijc-client-chartcomponents.ts"),
+        BijcPlotlyComponents: path.join(__dirname, "./typescript/bijc-client-chartcomponents.ts"),
     },
 
     output: {

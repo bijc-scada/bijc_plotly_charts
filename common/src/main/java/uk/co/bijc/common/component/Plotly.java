@@ -42,7 +42,7 @@ public class Plotly {
             .setSchema(SCHEMA)
             // .setEvents(Arrays.asList())
             .setName("Plotly")
-            .setIcon(new ImageIcon(PlotlyComponents.class.getResource("/size-icon.png")))
+            .setIcon(new ImageIcon(PlotlyComponents.class.getResource("/plotly.png")))
             .addPaletteEntry("", "Plotly", "A Plotly.js chart component", null, null)
             .addPaletteEntry("plotly-bar", "Plotly Bar", "A Plotly.js bar component", null, getVariant("bar"))
             .addPaletteEntry("plotly-line", "Plotly Line", "A Plotly.js line component", null, getVariant("line"))

@@ -24,7 +24,7 @@ plugins {
     id "base"
 }
 
-version "1.0.1"
+version "1.1.0"
 group "uk.co.bijc"
 
 def getDate() {
@@ -48,7 +48,7 @@ allprojects {
         moduleName "BIJC Plotly Component"
         moduleId "uk.co.bijc.plotly"
         moduleVersion "${project.version}"
-        moduleDescription "A component that exposes screen and page size to perspective."
+        moduleDescription "A component that implements the Plotly.js library as a component."
         requiredIgnitionVersion "8.1.0"
         requiredFrameworkVersion "8"
         isFree true
@@ -66,8 +66,8 @@ allprojects {
         ]
 
         hooks = [
-                [scope: "G", hookClass: "uk.co.bijc.gateway.BijcPlotlyGatewayHook"],
-                [scope: "D", hookClass: "uk.co.bijc.designer.BijcPlotlyDesignerHook"]
+                [scope: "G", hookClass: "uk.co.bijc.gateway.PlotlyGatewayHook"],
+                [scope: "D", hookClass: "uk.co.bijc.designer.PlotlyDesignerHook"]
         ]
 
     }

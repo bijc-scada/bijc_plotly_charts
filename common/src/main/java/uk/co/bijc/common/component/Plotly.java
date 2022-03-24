@@ -1,35 +1,32 @@
 package uk.co.bijc.common.component;
 
-import java.io.InputStreamReader;
-
-import javax.swing.ImageIcon;
-
 import com.inductiveautomation.ignition.common.gson.JsonObject;
 import com.inductiveautomation.ignition.common.gson.JsonParser;
 import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptorImpl;
 
-import uk.co.bijc.common.BijcPlotlyComponents;
+import uk.co.bijc.common.PlotlyComponents;
+
+import java.io.InputStreamReader;
+import javax.swing.*;
 
 /**
  * Describes the component to the Java registry so the gateway and designer know
  * to look for the front end elements.
  * In a 'common' scope so that it's referencable by both gateway and designer.
  */
-public class BijcPlotly {
+public class Plotly {
 
     // unique ID of the component which perfectly matches that provided in the
     // javascript's ComponentMeta implementation
     public static String COMPONENT_ID = "bijc.display.plotly";
 
-    public static JsonSchema getSchema(String resourcePath) {
-        return JsonSchema.parse(BijcPlotlyComponents.class.getResourceAsStream("/" + resourcePath));
-    }
+    public static JsonSchema SCHEMA = JsonSchema
+            .parse(PlotlyComponents.class.getResourceAsStream("/plotly.props.json"));
 
-    static JsonObject getVariantProps(String fileName) {
-        return (new JsonParser()).parse(new InputStreamReader(BijcPlotlyComponents.class.getResourceAsStream(fileName)))
-                .getAsJsonObject();
+    static JsonObject getVariant(String fileName) {
+        return (new JsonParser()).parse(new InputStreamReader(PlotlyComponents.class.getResourceAsStream(fileName))).getAsJsonObject();
     }
 
     /**
@@ -39,18 +36,18 @@ public class BijcPlotly {
      * are optional.
      */
     public static ComponentDescriptor DESCRIPTOR = ComponentDescriptorImpl.ComponentBuilder.newBuilder()
-            .setPaletteCategory(BijcPlotlyComponents.COMPONENT_CATEGORY)
+            .setPaletteCategory(PlotlyComponents.COMPONENT_CATEGORY)
             .setId(COMPONENT_ID)
-            .setSchema(getSchema("bijcplotly.props.json"))
+            .setModuleId(PlotlyComponents.MODULE_ID)
+            .setSchema(SCHEMA)
+            // .setEvents(Arrays.asList())
             .setName("Plotly")
-            .setDefaultMetaName("plotly")
-            .setResources(BijcPlotlyComponents.BROWSER_RESOURCES)
+            .setIcon(new ImageIcon(PlotlyComponents.class.getResource("/size-icon.png")))
             .addPaletteEntry("", "Plotly", "A Plotly.js chart component", null, null)
-            .addPaletteEntry("bijcplotly-bar", "Plotly Bar", "A Plotly.js bar component", null,
-                    getVariantProps("/variants/bijc.bar.props.json"))
-            .addPaletteEntry("bijcplotly-line", "Plotly Bar", "A Plotly.js line component", null,
-                    getVariantProps("/variants/bijc.line.props.json"))
-            .setIcon(new ImageIcon(BijcPlotlyComponents.class.getResource("/size-icon.png")))
-
+            .addPaletteEntry("plotly-bar", "Plotly Bar", "A Plotly.js bar component", null, getVariant("/variants/plotly.bar.props.json"))
+            .addPaletteEntry("plotly-line", "Plotly Line", "A Plotly.js line component", null, getVariant("/variants/plotly.line.props.json"))
+            // getVariantProps("/variants/bijcplotly.bar.props.json"))
+            .setDefaultMetaName("plotly")
+            .setResources(PlotlyComponents.BROWSER_RESOURCES)
             .build();
 }

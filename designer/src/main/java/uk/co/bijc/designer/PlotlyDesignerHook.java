@@ -7,27 +7,27 @@ import com.inductiveautomation.ignition.designer.model.AbstractDesignerModuleHoo
 import com.inductiveautomation.ignition.designer.model.DesignerContext;
 import com.inductiveautomation.perspective.designer.DesignerComponentRegistry;
 import com.inductiveautomation.perspective.designer.api.PerspectiveDesignerInterface;
-import uk.co.bijc.common.component.BijcPlotly;
-import uk.co.bijc.common.BijcPlotlyComponents;
+import uk.co.bijc.common.component.Plotly;
+import uk.co.bijc.common.PlotlyComponents;
 
 
 /**
  * The 'hook' class for the designer scope of the module.  Registered in the ignitionModule configuration of the
  * root build.gradle file.
  */
-public class BijcPlotlyDesignerHook extends AbstractDesignerModuleHook {
-    private static final LoggerEx log = LoggerEx.newBuilder().build("BijcPlotly");
-    private static final boolean isDebug = BijcPlotlyComponents.isDebug;
+public class PlotlyDesignerHook extends AbstractDesignerModuleHook {
+    private static final LoggerEx log = LoggerEx.newBuilder().build("bijc.designer.PlotlyDesigner");
+    private static final boolean isDebug = PlotlyComponents.isDebug;
 
     private DesignerContext context;
     private DesignerComponentRegistry registry;
 
     static {
-        BundleUtil.get().addBundle("bijcplotly", BijcPlotlyDesignerHook.class.getClassLoader(), "bijcplotly");
+        BundleUtil.get().addBundle("plotly", PlotlyDesignerHook.class.getClassLoader(), "plotly");
     }
 
-    public BijcPlotlyDesignerHook() {
-        if (isDebug) log.info("Registering Bijc Components in Designer!");
+    public PlotlyDesignerHook() {
+        if (isDebug) log.info("Registering BIJC Components in Designer!");
     }
 
     @Override
@@ -44,8 +44,8 @@ public class BijcPlotlyDesignerHook extends AbstractDesignerModuleHook {
         registry = pdi.getDesignerComponentRegistry();
 
         // register components to get them on the palette
-        if (isDebug) log.info(BijcPlotly.COMPONENT_ID);
-        registry.registerComponent(BijcPlotly.DESCRIPTOR);
+        if (isDebug) log.info(Plotly.COMPONENT_ID);
+        registry.registerComponent(Plotly.DESCRIPTOR);
     }
 
 
@@ -55,6 +55,6 @@ public class BijcPlotlyDesignerHook extends AbstractDesignerModuleHook {
     }
 
     private void removeComponents() {
-        registry.removeComponent(BijcPlotly.COMPONENT_ID);
+        registry.removeComponent(Plotly.COMPONENT_ID);
     }
 }

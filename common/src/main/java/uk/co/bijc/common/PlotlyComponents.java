@@ -4,7 +4,7 @@ import java.util.Set;
 
 import com.inductiveautomation.perspective.common.api.BrowserResource;
 
-public class BijcPlotlyComponents {
+public class PlotlyComponents {
     public static final boolean isDebug = false;
 
     public static final String MODULE_ID = "uk.co.bijc.plotly";
@@ -14,12 +14,12 @@ public class BijcPlotlyComponents {
         Set.of(
             new BrowserResource(
                 "bijc-plotly-components-js",
-                String.format("/res/%s/BijcPlotlyComponents.js", URL_ALIAS),
+                String.format("/res/%s/PlotlyComponents.js", URL_ALIAS),
                 BrowserResource.ResourceType.JS
             ),
             new BrowserResource(
                 "bijc-plotly-components-css",
-                String.format("/res/%s/BijcPlotlyComponents.css", URL_ALIAS),
+                String.format("/res/%s/PlotlyComponents.css", URL_ALIAS),
                 BrowserResource.ResourceType.CSS
             )
         );

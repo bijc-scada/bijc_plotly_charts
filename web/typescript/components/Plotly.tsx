@@ -18,20 +18,20 @@ import Plot from 'react-plotly.js';
 // ComponentRegistry provided by the perspective-client API.
 export const COMPONENT_TYPE = "bijc.display.plotly";
 
-interface BijcPlotlyBoxProps {
+interface PlotlyCompProps {
     data: any;
     layout: any;
     config: any;
 }
 
-interface BijcPlotlyState {
+interface PlotlyCompState {
     data: any;
     layout: any;
     config: any;
 }
 
 @observer
-export class BijcPlotly extends Component<ComponentProps<BijcPlotlyBoxProps>, BijcPlotlyState> {
+export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCompState> {
     // private webcamRef = React.createRef<any>();
 
     render() {
@@ -66,14 +66,14 @@ export class BijcPlotly extends Component<ComponentProps<BijcPlotlyBoxProps>, Bi
 }
 
 // this is the actual thing that gets registered with the component registry
-export class BijcPlotlyMeta implements ComponentMeta {
+export class PlotlyMeta implements ComponentMeta {
 
     getComponentType(): string {
         return COMPONENT_TYPE;
     }
 
     getViewComponent(): PComponent {
-        return BijcPlotly;
+        return Plotly;
     }
 
     getDefaultSize(): SizeObject {
@@ -83,7 +83,7 @@ export class BijcPlotlyMeta implements ComponentMeta {
         });
     }
 
-    getPropsReducer(tree: PropertyTree): BijcPlotlyBoxProps {
+    getPropsReducer(tree: PropertyTree): PlotlyCompProps {
         return {
             data: tree.read("data"),
             layout: tree.read("layout"),

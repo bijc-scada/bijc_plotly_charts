@@ -22,6 +22,21 @@
       "$ref": "#/definitions/Config",
       "default": {}
     },
+    "events": {
+      "type": "object",
+      "properties": {
+        "disableOnLegendClickDefault": {
+          "type": "boolean",
+          "description": "Whether the onLegendClick event default behaviour is disabled",
+          "default": false
+        },
+        "disableOnLegendDoubleClickDefault": {
+          "type": "boolean",
+          "description": "Whether the onLegendDoubleClick event default behaviour is disabled",
+          "default": false
+        }
+      }
+    },
     "style": {
       "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
       "default": {
@@ -651,8 +666,71 @@
       "schema": {
         "type": "object",
         "properties": {
+          "mouseEvent": {
+            "type": "object"
+          },
           "points": {
             "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "name": "onHover",
+      "description": "Fired as the mouse moves over the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "name": "onUnHover",
+      "description": "Fired when the mouse moves off of the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "name": "onLegendClick",
+      "description": "Fired when an option on the legend is clicked",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "mouseEvent": {
+            "type": "object"
+          },
+          "curveNumber": {
+            "type": "number"
+          },
+          "curveData": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "onLegendDoubleClick",
+      "description": "Fired when an option on the legend is double clicked",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "mouseEvent": {
+            "type": "object"
+          },
+          "curveNumber": {
+            "type": "number"
+          },
+          "curveData": {
+            "type": "object"
           }
         }
       }

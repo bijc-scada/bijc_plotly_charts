@@ -4,8 +4,11 @@
     "mouseEvent": {
       "type": "object"
     },
-    "points": {
-      "type": "array"
+    "curveNumber": {
+      "type": "number"
+    },
+    "curveData": {
+      "type": "object"
     }
   }
 }

@@ -1,9 +1,6 @@
 {
   "type": "object",
   "properties": {
-    "mouseEvent": {
-      "type": "object"
-    },
     "points": {
       "type": "array"
     }

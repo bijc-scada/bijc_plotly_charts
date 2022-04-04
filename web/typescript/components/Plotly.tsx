@@ -10,7 +10,7 @@ import {
 import { observer } from 'mobx-react';
 
 import Plot from 'react-plotly.js';
-import { PlotDatum, PlotMouseEvent } from 'plotly.js';
+import { LegendClickEvent, PlotDatum, PlotMouseEvent, PlotSelectionEvent, SliderChangeEvent, SliderEndEvent, SliderStartEvent } from 'plotly.js';
 
 // import * as d3 from 'd3';
 
@@ -23,6 +23,12 @@ interface PlotlyCompProps {
     data: any;
     layout: any;
     config: any;
+    events: PlotlyEvents;
+}
+
+interface PlotlyEvents {
+    disabledOnLegendClick: boolean;
+    disabledOnLegendDoubleClick: boolean;
 }
 
 interface PlotlyCompState {
@@ -37,7 +43,7 @@ export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCom
         let newPoints = [] as Array<object>;
 
         points.forEach((point: PlotDatum) => {
-            let newDatum = {};
+            let newDatum = {} as any;
 
             for (let key in point) {
                 if (key == "xaxis" || key == "yaxis" || key == "data" || key == "fullData") {
@@ -52,10 +58,84 @@ export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCom
         return newPoints;
     }
 
-    // private webcamRef = React.createRef<any>();
-    handleOnClick = (event: Readonly<PlotMouseEvent>) => {
-        this.props.componentEvents.fireComponentEvent("onClick", { points: this.sanitisePoints(event.points) });
+    sanitiseMouseEvent = (mouseEvent: MouseEvent) => {
+        let newMouseEvent = {} as any;
+
+        newMouseEvent.altKey = mouseEvent.altKey;
+        newMouseEvent.ctrlKey = mouseEvent.ctrlKey;
+        newMouseEvent.shiftKey = mouseEvent.shiftKey;
+        newMouseEvent.metaKey = mouseEvent.metaKey;
+
+        return newMouseEvent;
     }
+
+    handleOnButtonClicked = (event: Readonly<Plotly.ButtonClickEvent>) => {
+        console.log(event);
+    }
+
+    handleOnClick = (event: Readonly<PlotMouseEvent>) => {
+        this.props.componentEvents.fireComponentEvent("onClick", { mouseEvent: this.sanitiseMouseEvent(event.event), points: this.sanitisePoints(event.points) });
+    }
+
+    handleOnClickAnotation = (event: Readonly<Plotly.ClickAnnotationEvent>) => {
+        console.log("onClickAnnotation");
+        console.log(event);
+    }
+
+    handleOnHover = (event: Readonly<PlotMouseEvent>) => {
+        this.props.componentEvents.fireComponentEvent("onHover", { points: this.sanitisePoints(event.points) });
+    }
+
+    handleOnUnhover = (event: Readonly<PlotMouseEvent>) => {
+        this.props.componentEvents.fireComponentEvent("onUnHover", { points: this.sanitisePoints(event.points) });
+    }
+
+    handleOnLegendClick = (event: Readonly<LegendClickEvent>) => {
+        const curveNumber = event.curveNumber;
+        const curveData = event.data[event.curveNumber];
+
+        this.props.componentEvents.fireComponentEvent("onLegendClick", { mouseEvent: this.sanitiseMouseEvent(event.event), curveNumber: curveNumber, curveData: curveData });
+
+        if (this.props.props.events.disabledOnLegendClick) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    handleOnLegendDoubleClick = (event: Readonly<LegendClickEvent>) => {
+        const curveNumber = event.curveNumber;
+        const curveData = event.data[event.curveNumber];
+
+        this.props.componentEvents.fireComponentEvent("onLegendClick", { mouseEvent: this.sanitiseMouseEvent(event.event), curveNumber: curveNumber, curveData: curveData });
+
+        if (this.props.props.events.disabledOnLegendDoubleClick) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    handleOnSelected = (event: Readonly<PlotSelectionEvent>) => {
+        console.log("onSelected");
+        console.log(event);
+    }
+    handleOnSelecting = (event: Readonly<PlotSelectionEvent>) => {
+        console.log("onSelecting");
+        console.log(event);
+    }
+    handleOnSliderChange = (event: Readonly<SliderChangeEvent>) => {
+        console.log("onSliderChange");
+        console.log(event);
+    }
+    handleOnSliderEnd = (event: Readonly<SliderEndEvent>) => {
+        console.log("onSliderEnd");
+        console.log(event);
+    }
+    handleOnSliderStart = (event: Readonly<SliderStartEvent>) => {
+        console.log("onSliderStart");
+        console.log(event);
+    }
+
 
     render() {
         const { props, emit } = this.props;
@@ -84,6 +164,21 @@ export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCom
                     useResizeHandler={true}
 
                     onClick={this.handleOnClick}
+                    onHover={this.handleOnHover}
+                    onUnhover={this.handleOnUnhover}
+
+                    onButtonClicked={this.handleOnButtonClicked}
+                    onClickAnnotation={this.handleOnClickAnotation}
+
+                    onLegendClick={this.handleOnLegendClick}
+                    onLegendDoubleClick={this.handleOnLegendDoubleClick}
+
+                    onSelected={this.handleOnSelected}
+                    onSelecting={this.handleOnSelecting}
+
+                    onSliderChange={this.handleOnSliderChange}
+                    onSliderStart={this.handleOnSliderStart}
+                    onSliderEnd={this.handleOnSliderEnd}
                 />
             </div>
         );
@@ -112,7 +207,8 @@ export class PlotlyMeta implements ComponentMeta {
         return {
             data: tree.read("data"),
             layout: tree.read("layout"),
-            config: tree.read("config")
+            config: tree.read("config"),
+            events: tree.read("events")
         };
     }
 }

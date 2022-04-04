@@ -24,7 +24,7 @@ plugins {
     id "base"
 }
 
-version "1.1.0"
+version "1.1.1"
 group "uk.co.bijc"
 
 def getDate() {

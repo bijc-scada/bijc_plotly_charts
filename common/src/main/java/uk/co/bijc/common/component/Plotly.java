@@ -5,10 +5,13 @@ import com.inductiveautomation.ignition.common.gson.JsonParser;
 import com.inductiveautomation.ignition.common.jsonschema.JsonSchema;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptor;
 import com.inductiveautomation.perspective.common.api.ComponentDescriptorImpl;
+import com.inductiveautomation.perspective.common.api.ComponentEventDescriptor;
 
 import uk.co.bijc.common.PlotlyComponents;
 
 import java.io.InputStreamReader;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 /**
@@ -29,6 +32,18 @@ public class Plotly {
         return (new JsonParser()).parse(new InputStreamReader(PlotlyComponents.class.getResourceAsStream(String.format("/variants/plotly.%s.props.json",chartName)))).getAsJsonObject();
     }
 
+    public static final ComponentEventDescriptor ONCLICK_HANDLER = new PlotlyEventDescriptor("onClick");
+
+    public static JsonSchema getSchema(String resourcePath) {
+        return JsonSchema.parse(PlotlyComponents.class.getResourceAsStream(resourcePath));
+    }
+
+    public static class PlotlyEventDescriptor extends ComponentEventDescriptor {
+        public PlotlyEventDescriptor(String name) {
+            super(name, Plotly.getSchema(String.format("/events/plotly.%s.json",name)));
+        }
+    }
+
     /**
      * Components register with the Java side ComponentRegistry but providing a
      * ComponentDescriptor. Here we
@@ -40,7 +55,7 @@ public class Plotly {
             .setId(COMPONENT_ID)
             .setModuleId(PlotlyComponents.MODULE_ID)
             .setSchema(SCHEMA)
-            // .setEvents(Arrays.asList())
+            .setEvents(Arrays.asList(ONCLICK_HANDLER))
             .setName("Plotly")
             .setIcon(new ImageIcon(PlotlyComponents.class.getResource("/plotly.png")))
             .addPaletteEntry("", "Plotly", "A Plotly.js chart component", null, null)

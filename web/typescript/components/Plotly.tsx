@@ -10,6 +10,7 @@ import {
 import { observer } from 'mobx-react';
 
 import Plot from 'react-plotly.js';
+import { PlotDatum, PlotMouseEvent } from 'plotly.js';
 
 // import * as d3 from 'd3';
 
@@ -32,7 +33,29 @@ interface PlotlyCompState {
 
 @observer
 export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCompState> {
+    sanitisePoints = (points: Array<PlotDatum>) => {
+        let newPoints = [] as Array<object>;
+
+        points.forEach((point: PlotDatum) => {
+            let newDatum = {};
+
+            for (let key in point) {
+                if (key == "xaxis" || key == "yaxis" || key == "data" || key == "fullData") {
+                    continue;
+                }
+                newDatum[key] = point[key];
+            }
+
+            newPoints.push(newDatum);
+        });
+
+        return newPoints;
+    }
+
     // private webcamRef = React.createRef<any>();
+    handleOnClick = (event: Readonly<PlotMouseEvent>) => {
+        this.props.componentEvents.fireComponentEvent("onClick", { points: this.sanitisePoints(event.points) });
+    }
 
     render() {
         const { props, emit } = this.props;
@@ -59,6 +82,8 @@ export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCom
                     config={props.config}
                     style={{ width: "100%", height: "100%" }}
                     useResizeHandler={true}
+
+                    onClick={this.handleOnClick}
                 />
             </div>
         );

@@ -2,7 +2,22 @@
   "type": "object",
   "properties": {
     "mouseEvent": {
-      "type": "object"
+      "type": "object",
+      "description": "Which keys were held when the event fired",
+      "properties": {
+        "altKey": {
+          "type": "boolean"
+        },
+        "shiftKey": {
+          "type": "boolean"
+        },
+        "ctrlKey": {
+          "type": "boolean"
+        },
+        "metaKey": {
+          "type": "boolean"
+        }
+      }
     },
     "curveNumber": {
       "type": "number"

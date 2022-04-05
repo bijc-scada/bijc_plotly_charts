@@ -667,12 +667,36 @@
         "type": "object",
         "properties": {
           "mouseEvent": {
-            "type": "object"
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
           },
           "points": {
-            "type": "array"
+            "type": "array",
+            "description": "An array of the data points related to the mouse click"
           }
         }
+      }
+    },
+    {
+      "name": "onDoubleClick",
+      "description": "Fired when the chart is double clicked on",
+      "schema": {
+        "type": "object",
+        "properties": {}
       }
     },
     {
@@ -682,7 +706,8 @@
         "type": "object",
         "properties": {
           "points": {
-            "type": "array"
+            "type": "array",
+            "description": "An array of the data points related to the mouse position"
           }
         }
       }
@@ -694,7 +719,90 @@
         "type": "object",
         "properties": {
           "points": {
-            "type": "array"
+            "type": "array",
+            "description": "An array of the data points related to the mouse position"
+          }
+        }
+      }
+    },
+    {
+      "name": "onSelecting",
+      "description": "Fires when using the selection tool on the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the points inside the selection range"
+          },
+          "range": {
+            "type": "object",
+            "description": "The value range selected",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the corners of the range box"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the corners of the range box"
+              }
+            }
+          },
+          "lassoPoints": {
+            "type": "object",
+            "description": "The co-ordinates of the points that define the lasso shape",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the points that define the lasso shape"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the points that define the lasso shape"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "onSelected",
+      "description": "Fires when a selection has been made",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the points inside the selection range"
+          },
+          "range": {
+            "type": "object",
+            "description": "The value range selected",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the corners of the range box"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the corners of the range box"
+              }
+            }
+          },
+          "lassoPoints": {
+            "type": "object",
+            "description": "The co-ordinates of the points that define the lasso shape",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the points that define the lasso shape"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the points that define the lasso shape"
+              }
+            }
           }
         }
       }
@@ -706,7 +814,22 @@
         "type": "object",
         "properties": {
           "mouseEvent": {
-            "type": "object"
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
           },
           "curveNumber": {
             "type": "number"
@@ -724,7 +847,22 @@
         "type": "object",
         "properties": {
           "mouseEvent": {
-            "type": "object"
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
           },
           "curveNumber": {
             "type": "number"

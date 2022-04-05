@@ -36,11 +36,14 @@ public class Plotly {
     }
 
     public static final ComponentEventDescriptor ONCLICK_HANDLER = new PlotlyEventDescriptor("onClick");
+    public static final ComponentEventDescriptor ONDOUBLECLICK_HANDLER = new PlotlyEventDescriptor("onDoubleClick");
     public static final ComponentEventDescriptor ONHOVER_HANDLER = new PlotlyEventDescriptor("onHover");
     public static final ComponentEventDescriptor ONUNHOVER_HANDLER = new PlotlyEventDescriptor("onUnHover");
     public static final ComponentEventDescriptor ONLEGENDCLICK_HANDLER = new PlotlyEventDescriptor("onLegendClick");
     public static final ComponentEventDescriptor ONLEGENDDOUBLECLICK_HANDLER = new PlotlyEventDescriptor(
             "onLegendDoubleClick");
+    public static final ComponentEventDescriptor ONSELECTING_HANDLER = new PlotlyEventDescriptor("onSelecting");
+    public static final ComponentEventDescriptor ONSELECTED_HANDLER = new PlotlyEventDescriptor("onSelected");
 
     public static JsonSchema getSchema(String resourcePath) {
         return JsonSchema.parse(PlotlyComponents.class.getResourceAsStream(resourcePath));
@@ -64,7 +67,7 @@ public class Plotly {
             .setModuleId(PlotlyComponents.MODULE_ID)
             .setSchema(SCHEMA)
             .setEvents(Arrays.asList(ONCLICK_HANDLER, ONHOVER_HANDLER, ONUNHOVER_HANDLER, ONLEGENDCLICK_HANDLER,
-                    ONLEGENDDOUBLECLICK_HANDLER))
+                    ONLEGENDDOUBLECLICK_HANDLER, ONSELECTING_HANDLER, ONSELECTED_HANDLER))
             .setName("Plotly")
             .setIcon(new ImageIcon(PlotlyComponents.class.getResource("/plotly.png")))
             .addPaletteEntry("", "Plotly", "A Plotly.js chart component", null, null)

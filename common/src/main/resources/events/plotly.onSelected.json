@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "description": "An array of the points inside the selection range"
+    },
+    "range": {
+      "type": "object",
+      "description": "The value range selected",
+      "properties": {
+        "x": {
+          "type": "array",
+          "description": "The x co-ordinates of the corners of the range box"
+        },
+        "y": {
+          "type": "array",
+          "description": "The y co-ordinates of the corners of the range box"
+        }
+      }
+    },
+    "lassoPoints": {
+      "type": "object",
+      "description": "The co-ordinates of the points that define the lasso shape",
+      "properties": {
+        "x": {
+          "type": "array",
+          "description": "The x co-ordinates of the points that define the lasso shape"
+        },
+        "y": {
+          "type": "array",
+          "description": "The y co-ordinates of the points that define the lasso shape"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "mouseEvent": {
+      "type": "object",
+      "description": "Which keys were held when the event fired",
+      "properties": {
+        "altKey": {
+          "type": "boolean"
+        },
+        "shiftKey": {
+          "type": "boolean"
+        },
+        "ctrlKey": {
+          "type": "boolean"
+        },
+        "metaKey": {
+          "type": "boolean"
+        }
+      }
+    },
+    "points": {
+      "type": "array",
+      "description": "An array of the data points related to the mouse click"
+    }
+  }
+}

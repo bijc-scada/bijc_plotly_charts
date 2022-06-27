@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "description": "An array of the data points related to the mouse position"
+    }
+  }
+}

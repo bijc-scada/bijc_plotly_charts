@@ -1,0 +1,877 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DataTrace"
+      },
+      "description": "The data to be displayed on the Plotly chart",
+      "default": []
+    },
+    "layout": {
+      "type": "object",
+      "description": "The layout object for the Plotly chart",
+      "$ref": "#/definitions/Layout",
+      "default": {}
+    },
+    "config": {
+      "type": "object",
+      "description": "The config object for the Plotly chart",
+      "$ref": "#/definitions/Config",
+      "default": {}
+    },
+    "events": {
+      "type": "object",
+      "properties": {
+        "disableOnLegendClickDefault": {
+          "type": "boolean",
+          "description": "Whether the onLegendClick event default behaviour is disabled",
+          "default": false
+        },
+        "disableOnLegendDoubleClickDefault": {
+          "type": "boolean",
+          "description": "Whether the onLegendDoubleClick event default behaviour is disabled",
+          "default": false
+        }
+      }
+    },
+    "style": {
+      "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+      "default": {
+        "classes": ""
+      }
+    }
+  },
+  "definitions": {
+    "DataTrace": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of chart to display the trace on",
+          "suggestions": {
+            "Scatter": "scatter",
+            "Scatter GL": "scattergl",
+            "Bar": "bar"
+          },
+          "default": ""
+        },
+        "name": {
+          "type": "string",
+          "description": "Sets the trace name. The trace name appear as the legend item and on hover.",
+          "default": "Trace Name"
+        },
+        "visible": {
+          "type": ["string", "boolean"],
+          "description": "Determines whether or not this trace is visible. If 'legendonly', the trace is not drawn, but can appear as a legend item"
+        },
+        "showlegend": {
+          "type": "boolean",
+          "description": "Determines whether or not an item corresponding to this trace is shown in the legend"
+        },
+        "legendrank": {
+          "type": "number",
+          "description": "Sets the legend rank for this trace"
+        },
+        "legendgroup": {
+          "type": "string",
+          "description": "Sets the legend group for this trace"
+        },
+        "legendgrouptitle": {
+          "type": "object",
+          "properties": {
+            "font": {
+              "type": "object",
+              "description": "Sets this legend group's title font",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "format": "color"
+                },
+                "family": {
+                  "type": "string",
+                  "description": "HTML font family"
+                },
+                "size": {
+                  "type": ["string", "number"]
+                }
+              }
+            },
+            "text": {
+              "type": "string",
+              "descriprion": "Sets the title of the legend group"
+            }
+          }
+        },
+        "opacity": {
+          "type": "number",
+          "description": "Sets the opacity of the trace"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "lines",
+            "markers",
+            "text",
+            "none",
+            "lines+markers",
+            "lines+text",
+            "markers+text",
+            "lines+markers+text"
+          ],
+          "description": "Determines the drawing mode for this trace"
+        },
+        "ids": {
+          "type": "array",
+          "description": "Assigns id labels to each datum. Should be an array of strings, not numbers or any other type."
+        },
+        "x": {
+          "type": "array",
+          "description": "Sets the x coordinates"
+        },
+        "x0": {
+          "type": ["number", "string"],
+          "description": "Alternate to 'x'. Builds a linear space of x coordinates. Use with 'dx' where 'x0' is the starting coordinate and 'dx' the step"
+        },
+        "dx": {
+          "type": "number",
+          "description": "Sets the x coordinate step."
+        },
+        "xgap": {
+          "type": "number",
+          "description": "Horizontal gap between bricks"
+        },
+        "y": {
+          "type": "array",
+          "description": "Sets the x coordinates"
+        },
+        "y0": {
+          "type": ["number", "string"],
+          "description": "Alternate to 'x'. Builds a linear space of x coordinates. Use with 'dx' where 'x0' is the starting coordinate and 'dx' the step"
+        },
+        "dy": {
+          "type": "number",
+          "description": "Sets the x coordinate step."
+        },
+        "ygap": {
+          "type": "number",
+          "description": "Vertical gap between bricks"
+        },
+        "z": {
+          "type": "array",
+          "description": "Sets the x coordinates"
+        },
+        "labels": {
+          "type": "array",
+          "description": "Sets the sector labels."
+        },
+        "dlabel": {
+          "type": "number",
+          "description": "Sets the label step"
+        },
+        "label0": {
+          "type": "number",
+          "description": "Alternate to 'labels'. Builds a numeric set of labels. Use with 'dlabel' where 'label0' is the starting label and 'dlabel' the step."
+        },
+        "pull": {
+          "type": ["number", "array"],
+          "description": "Sets the fraction of larger radius to pull the sectors out from the center. This can be a constant to pull all slices apart from each other equally or an array to highlight one or more slices."
+        },
+        "base": {
+          "type": ["number", "string"],
+          "description": "Sets where the bar base is drawn"
+        },
+        "width": {
+          "type": ["number", "array"],
+          "description": "Sets the bar width"
+        },
+        "offset": {
+          "type": ["number", "array"]
+        },
+        "text": {
+          "type": ["string", "array"],
+          "description": "Sets text elements associated with each datum"
+        },
+        "hovertext": {
+          "type": ["string", "array"],
+          "description": "Sets hover text elements associated with each datum"
+        },
+        "hoverinfo": {
+          "type": "string",
+          "description": "Determines which trace information appear on hover."
+        },
+        "customdata": {
+          "type": "array",
+          "description": "Assigns extra data each datum."
+        },
+        "xaxis": {
+          "type": "string",
+          "description": "Sets a reference between this trace's x coordinates and an x axis defined in the layout object"
+        },
+        "yaxis": {
+          "type": "string",
+          "description": "Sets a reference between this trace's y coordinates and an y axis defined in the layout object"
+        },
+        "zaxis": {
+          "type": "string",
+          "description": "Sets a reference between this trace's z coordinates and an z axis defined in the layout object"
+        },
+        "orientation": {
+          "type": "string",
+          "enum": ["v", "h"],
+          "description": "Root orientation for the trace"
+        },
+        "domain": {
+          "type": "object",
+          "properties": {
+            "column": {
+              "type": "number",
+              "description": "If there is a layout grid, use the domain for this column in the grid for this pie trace ."
+            },
+            "row": {
+              "type": "number",
+              "description": "If there is a layout grid, use the domain for this row in the grid for this pie trace ."
+            },
+            "x": {
+              "type": "array",
+              "description": "Sets the horizontal domain of this pie trace (in plot fraction)."
+            },
+            "y": {
+              "type": "array",
+              "description": "Sets the vertical domain of this pie trace (in plot fraction)."
+            }
+          }
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["clockwise", "counterclockwise"],
+          "description": "Sets the direction of the sectors"
+        },
+        "hole": {
+          "type": "number",
+          "description": "Sets the fraction of the radius to cut out of the pie. Use this to make a donut chart."
+        },
+        "rotation": {
+          "type": "number",
+          "description": "Instead of the first slice starting at 12 o'clock, rotate to some other angle."
+        },
+        "sort": {
+          "type": "boolean",
+          "description": "Determines whether or not the sectors are reordered from largest to smallest."
+        },
+        "contours": {
+          "type": "object",
+          "properties": {
+            "coloring": {
+              "type": "string",
+              "enum": ["fill", "heatmap", "lines", "none"],
+              "description": "Determines the coloring method showing the contour values."
+            },
+            "start": {
+              "type": "number",
+              "description": "Sets the start contour level value"
+            },
+            "end": {
+              "type": "number",
+              "description": "Sets the end contour level value"
+            },
+            "labelfont": {
+              "type": "object",
+              "description": "Sets this legend group's title font",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "format": "color"
+                },
+                "family": {
+                  "type": "string",
+                  "description": "HTML font family"
+                },
+                "size": {
+                  "type": ["string", "number"]
+                }
+              }
+            },
+            "operation": {
+              "type": "string",
+              "enum": [
+                "=",
+                "<",
+                ">=",
+                ">",
+                "<=",
+                "[]",
+                "()",
+                "[)",
+                "(]",
+                "[]",
+                ")(",
+                "](",
+                ")["
+              ]
+            },
+            "showlabels": {
+              "type": "boolean",
+              "description": "Determines whether to label the contour lines with their values."
+            },
+            "showline": {
+              "type": "boolean",
+              "description": "Determines whether or not the contour lines are drawn. Has an effect only if 'contours.coloring' is set to 'fill'."
+            },
+            "size": {
+              "type": "number",
+              "description": "Sets the step between each contour level. Must be positive."
+            },
+            "type": {
+              "type": "string",
+              "enum": ["levels", "constraint"]
+            }
+          }
+        },
+        "fillcolor": {
+          "type": "string",
+          "format": "color"
+        },
+        "marker": {
+          "type": "object",
+          "description": "Object describing the marker on a chart",
+          "properties": {
+            "color": {
+              "type": ["string", "array"],
+              "description": "The color of the marker"
+            },
+            "colorscale": {
+              "type": "string",
+              "enum": [
+                "Blackbody",
+                "Bluered",
+                "Blues",
+                "Cividis",
+                "Earth",
+                "Greens",
+                "Greys",
+                "Hot",
+                "Jet",
+                "Picnic",
+                "Portlan",
+                "Rainbow",
+                "RdBu",
+                "Reds",
+                "Viridis",
+                "YlGnBu",
+                "YlOrRd"
+              ]
+            },
+            "gradient": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": ["string", "array"],
+                  "format": "color"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["radial", "horizontal", "vertical", "none"]
+                }
+              }
+            },
+            "maxdisplayed": {
+              "type": "number",
+              "description": "Sets a maximum number of points to be drawn on the graph. '0' corresponds to no limit."
+            },
+            "opacity": {
+              "type": "number",
+              "description": "Sets the marker opacity"
+            },
+            "size": {
+              "type": ["number", "array"],
+              "description": "Sets the marker size in px"
+            }
+          }
+        },
+        "line": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "type": "string",
+              "format": "color",
+              "description": "Sets the line color"
+            },
+            "dash": {
+              "type": "string",
+              "suggestions": {
+                "solid": "solid",
+                "dot": "dot",
+                "dash": "dash",
+                "longdash": "longdash",
+                "dashdot": "dashdot",
+                "longdashdot": "longdashdot",
+                "5px,10px,2px,2px": "5px,10px,2px,2px",
+                "2px,4px,1px,1px": "2px,4px,1px,1px"
+              },
+              "description": "Sets the dash style of lines. Set to a dash type string or a dash length list in px."
+            },
+            "shape": {
+              "type": "string",
+              "enum": ["linear", "spline", "hv", "vh", "hvh", "vhv"],
+              "description": "Determins the line shape.  With 'spline' the lines are drawn using spline interpolation. The other available values correspond to step-wise line shapes."
+            },
+            "simplify": {
+              "type": "boolean",
+              "description": "Simplifies lines by removing nearly-collinear points."
+            },
+            "smoothing": {
+              "type": "number",
+              "description": "Has an effect only if `shape` is set to 'spline' Sets the amount of smoothing. '0' corresponds to no smoothing (equivalent to a 'linear' shape)."
+            },
+            "width": {
+              "type": "number",
+              "description": "Sets the line width in px"
+            },
+            "fill": {
+              "type": "string",
+              "enum": [
+                "none",
+                "tozeroy",
+                "tozerox",
+                "tonexty",
+                "tonextx",
+                "toself",
+                "tonext"
+              ],
+              "description": "Sets the area to fill with a solid color."
+            },
+            "fillcolor": {
+              "type": "string",
+              "format": "color"
+            }
+          }
+        }
+      }
+    },
+    "Layout": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": {
+          "type": ["string", "object"],
+          "properties": {
+            "font": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "format": "color"
+                },
+                "family": {
+                  "type": "string",
+                  "description": "HTML font family"
+                },
+                "size": {
+                  "type": ["string", "number"]
+                }
+              }
+            },
+            "pad": {
+              "type": "object",
+              "properties": {
+                "b": {
+                  "type": "number",
+                  "description": "The amount of padding (in px) along the bottom of the component."
+                },
+                "l": {
+                  "type": "number",
+                  "description": "The amount of padding (in px) along the left of the component."
+                },
+                "r": {
+                  "type": "number",
+                  "description": "The amount of padding (in px) along the right of the component."
+                },
+                "t": {
+                  "type": "number",
+                  "description": "The amount of padding (in px) along the top of the component."
+                }
+              }
+            },
+            "text": {
+              "type": "string",
+              "descriprion": "Sets the plot's title."
+            },
+            "x": {
+              "type": "number",
+              "description": "Sets the x position with respect to 'xref' in normalized coordinates from '0' (left) to '1' (right)."
+            },
+            "xanchor": {
+              "type": "string",
+              "enum": ["auto", "left", "center", "right"],
+              "description": "Sets the title's horizontal alignment with respect to its x position."
+            },
+            "xref": {
+              "type": "string",
+              "enum": ["container", "paper"],
+              "description": "Sets the container 'x' refers to. 'container' spans the entire 'width' of the plot. 'paper' refers to the width of the plotting area only."
+            },
+            "y": {
+              "type": "number",
+              "description": "Sets the y position with respect to 'yref' in normalized coordinates from '0' (left) to '1' (right)."
+            },
+            "yanchor": {
+              "type": "string",
+              "enum": ["auto", "top", "middle", "bottom"],
+              "description": "Sets the title's vertical alignment with respect to its x position."
+            },
+            "yref": {
+              "type": "string",
+              "enum": ["container", "paper"],
+              "description": "Sets the container 'y' refers to. 'container' spans the entire 'width' of the plot. 'paper' refers to the width of the plotting area only."
+            }
+          }
+        },
+        "showlegend": {
+          "type": "boolean",
+          "description": "Sets whether or not a legend is drawn"
+        },
+        "legend": {
+          "type": "object",
+          "properties": {
+            "bgcolor": {
+              "type": "string",
+              "format": "color"
+            },
+            "bordercolor": {
+              "type": "string",
+              "format": "color"
+            },
+            "borderwidth": {
+              "type": "number"
+            },
+            "font": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "format": "color"
+                },
+                "family": {
+                  "type": "string",
+                  "description": "HTML font family"
+                },
+                "size": {
+                  "type": ["string", "number"]
+                }
+              }
+            },
+            "title": {
+              "type": "object",
+              "properties": {
+                "font": {
+                  "type": "object",
+                  "properties": {
+                    "color": {
+                      "type": "string",
+                      "format": "color"
+                    },
+                    "family": {
+                      "type": "string",
+                      "description": "HTML font family"
+                    },
+                    "size": {
+                      "type": ["string", "number"]
+                    }
+                  }
+                },
+                "side": {
+                  "type": "string",
+                  "enum": ["top", "left", "top left"]
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "valign": {
+              "type": "string",
+              "enum": ["top", "middle", "bottom"]
+            },
+            "x": {
+              "type": "number",
+              "description": "Sets the x position (in normalized coordinates) of the legend. Defaults to '1.02' for vertical legends and defaults to '0' for horizontal legends."
+            },
+            "xanchor": {
+              "type": "string",
+              "enum": ["auto", "left", "center", "left"]
+            },
+            "y": {
+              "type": "number",
+              "description": "Sets the y position (in normalized coordinates) of the legend. Defaults to '1' for vertical legends, defaults to '-0.1' for horizontal legends on graphs w/o range sliders and defaults to '1.1' for horizontal legends on graph with one or multiple range sliders."
+            },
+            "yanchor": {
+              "type": "string",
+              "enum": ["auto", "top", "middle", "bottom"]
+            }
+          }
+        },
+        "font": {
+          "type": "object",
+          "properties": {
+            "color": {
+              "type": "string",
+              "format": "color"
+            },
+            "family": {
+              "type": "string",
+              "description": "HTML font family"
+            },
+            "size": {
+              "type": ["string", "number"]
+            }
+          }
+        },
+        "separators": {
+          "type": "string",
+          "description": "Sets the decimal and thousand separators. For example, '. ' puts a '.' before decimals and a space between thousands. In English locales, default is '.,' but other locales may alter this default."
+        },
+        "paper_bgcolor": {
+          "type": "string",
+          "format": "color",
+          "description": "Sets the background color of the paper where the graph is drawn."
+        },
+        "plot_bgcolor": {
+          "type": "string",
+          "format": "color",
+          "description": "Sets the background color of the plotting area in-between x and y axes."
+        }
+      }
+    },
+    "Config": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "scrollZoom": {
+          "type": "boolean"
+        },
+        "editable": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "name": "onClick",
+      "description": "Fired when the chart is clicked on",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "mouseEvent": {
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
+          },
+          "points": {
+            "type": "array",
+            "description": "An array of the data points related to the mouse click"
+          }
+        }
+      }
+    },
+    {
+      "name": "onDoubleClick",
+      "description": "Fired when the chart is double clicked on",
+      "schema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "onHover",
+      "description": "Fired as the mouse moves over the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the data points related to the mouse position"
+          }
+        }
+      }
+    },
+    {
+      "name": "onUnHover",
+      "description": "Fired when the mouse moves off of the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the data points related to the mouse position"
+          }
+        }
+      }
+    },
+    {
+      "name": "onSelecting",
+      "description": "Fires when using the selection tool on the chart",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the points inside the selection range"
+          },
+          "range": {
+            "type": "object",
+            "description": "The value range selected",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the corners of the range box"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the corners of the range box"
+              }
+            }
+          },
+          "lassoPoints": {
+            "type": "object",
+            "description": "The co-ordinates of the points that define the lasso shape",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the points that define the lasso shape"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the points that define the lasso shape"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "onSelected",
+      "description": "Fires when a selection has been made",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "points": {
+            "type": "array",
+            "description": "An array of the points inside the selection range"
+          },
+          "range": {
+            "type": "object",
+            "description": "The value range selected",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the corners of the range box"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the corners of the range box"
+              }
+            }
+          },
+          "lassoPoints": {
+            "type": "object",
+            "description": "The co-ordinates of the points that define the lasso shape",
+            "properties": {
+              "x": {
+                "type": "array",
+                "description": "The x co-ordinates of the points that define the lasso shape"
+              },
+              "y": {
+                "type": "array",
+                "description": "The y co-ordinates of the points that define the lasso shape"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "onLegendClick",
+      "description": "Fired when an option on the legend is clicked",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "mouseEvent": {
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
+          },
+          "curveNumber": {
+            "type": "number"
+          },
+          "curveData": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "name": "onLegendDoubleClick",
+      "description": "Fired when an option on the legend is double clicked",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "mouseEvent": {
+            "type": "object",
+            "description": "Which keys were held when the event fired",
+            "properties": {
+              "altKey": {
+                "type": "boolean"
+              },
+              "shiftKey": {
+                "type": "boolean"
+              },
+              "ctrlKey": {
+                "type": "boolean"
+              },
+              "metaKey": {
+                "type": "boolean"
+              }
+            }
+          },
+          "curveNumber": {
+            "type": "number"
+          },
+          "curveData": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}

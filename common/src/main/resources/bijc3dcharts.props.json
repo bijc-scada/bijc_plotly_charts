@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "screenWidth": {
+            "type": "integer",
+            "description": "The current screen width",
+            "default": 0
+        },
+        "screenHeight": {
+            "type": "integer",
+            "description": "The current screen height",
+            "default": 0
+        },
+        "innerWidth": {
+            "type": "integer",
+            "description": "The current page width",
+            "default": 0
+        },
+        "innerHeight": {
+            "type": "integer",
+            "description": "The current page height",
+            "default": 0
+        },
+        "style": {
+            "$ref": "urn:ignition-schema:schemas/style-properties.schema.json",
+            "default": {
+                "classes": "",
+                "display": "none"
+            }
+        }
+    }
+}

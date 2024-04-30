@@ -14,12 +14,12 @@ public class PlotlyComponents {
         Set.of(
             new BrowserResource(
                 "bijc-plotly-components-js",
-                String.format("/res/%s/PlotlyComponents.js", URL_ALIAS),
+                String.format("/res/%s/PlotlyClientComponents.js", URL_ALIAS),
                 BrowserResource.ResourceType.JS
             ),
             new BrowserResource(
                 "bijc-plotly-components-css",
-                String.format("/res/%s/PlotlyComponents.css", URL_ALIAS),
+                String.format("/res/%s/PlotlyClientComponents.css", URL_ALIAS),
                 BrowserResource.ResourceType.CSS
             )
         );

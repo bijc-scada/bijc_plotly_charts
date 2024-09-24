@@ -8,7 +8,6 @@ import {
     SizeObject
 } from '@inductiveautomation/perspective-client';
 import { observer } from 'mobx-react';
-
 import Plot from 'react-plotly.js';
 import { ClickAnnotationEvent, LegendClickEvent, PlotDatum, PlotMouseEvent, PlotSelectionEvent } from 'plotly.js';
 

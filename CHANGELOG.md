@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [1.2.0] - 2024-04-30
+
+### Changed
+
+- Moved entire build system over to gradle.kts as in newer perspective module examples
+- Upgraded plotly.js library from ^2.11.1 to ^2.32.0
+- Split web subproject back into client and designer packages. No designer specific code yet
+
 ## [1.1.2] - 2022-04-05
 
 ### Added

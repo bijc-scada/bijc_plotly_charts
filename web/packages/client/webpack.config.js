@@ -24,7 +24,6 @@ function copyToResources() {
     const jSResourcePath = path.resolve(generatedResourcesDir, `${LibName}.js`);
     const cssResourcePath = path.resolve(generatedResourcesDir, `${LibName}.css`);
 
-
     const toCopy = [{from:jsToCopy, to: jSResourcePath}, {from: cssToCopy, to: cssResourcePath}];
 
     // if the desired folder doesn't exist, create it

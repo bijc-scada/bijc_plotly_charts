@@ -3,7 +3,7 @@ import com.github.gradle.node.npm.task.NpmTask
 
 plugins {
     java
-    id("com.github.node-gradle.node") version("3.2.1")
+    id("com.github.node-gradle.node") version("7.1.0")
 }
 // define a variable that describes the path to the mounted gateway folder, where we want to put things eventually
 val projectOutput: String by extra("$buildDir/generated-resources/")
@@ -11,9 +11,9 @@ val projectOutput: String by extra("$buildDir/generated-resources/")
 // configurations on which versions of Node, Npm, and Yarn the gradle build should use.  Configuration provided by/to
 // the gradle node plugin that"s applied above (com.moowork.node)
 node {
-    version.set("16.15.0")
-    yarnVersion.set("1.22.18")
-    npmVersion.set("8.5.5")
+    version.set("22.21.0")
+    yarnVersion.set("1.22.22")
+    npmVersion.set("11.7.0")
     download.set(true)
     nodeProjectDir.set(file(project.projectDir))
 
@@ -43,7 +43,7 @@ val yarnPackages by tasks.registering(YarnTask::class) {
         file("packages/designer/node_modules")
     )
 
-    dependsOn("${project.path}:yarn", ":web:npmSetup")
+    dependsOn("${project.path}:yarn", ":web:npmSetup", ":web:compileJava")
 }
 
 // define a gradle task that executes an npm script (defined in the package.json).

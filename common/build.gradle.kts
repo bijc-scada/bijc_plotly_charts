@@ -1,20 +1,8 @@
-
 plugins {
-    `java-library`
+    id("java-common-conventions")
 }
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-    }
-}
-
 
 dependencies {
-    // compileOnly is the gradle equivalent to "provided" scope.  Here we resolve the dependencies via the
-    // declarations in the gradle/libs.versions.toml file
-    compileOnly(libs.ignition.common)
-    compileOnly(libs.ignition.perspective.common)
-    compileOnly(libs.google.guava)
-    compileOnly(libs.ia.gson)
+    // add common scoped dependencies here
+    compileOnly(libs.bundles.common)
 }

@@ -285,3 +285,5 @@ gateway/src/main/resources/mounted/*.js
 
 external-scripts/system
 version.properties
+
+**/.kotlin

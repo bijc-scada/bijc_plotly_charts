@@ -41,20 +41,31 @@ interface PlotlyMouseEvent {
     metaKey: boolean;
 }
 
+type AnyObject = Record<string, any>;
+
 @observer
 export class Plotly extends Component<ComponentProps<PlotlyCompProps>, PlotlyCompState> {
+    // Creates a shallow copy of an object, exluding the keys passed in
+    omitKeys<T extends AnyObject, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+        return Object.fromEntries(
+            Object.entries(obj).filter(([key]) => !keys.includes(key as K))
+        ) as Omit<T, K>;
+    }
+    
     sanitisePoints = (points: Array<PlotDatum>) => {
         let newPoints = [] as Array<object>;
 
         points.forEach((point: PlotDatum) => {
-            let newDatum = {} as any;
+            const newDatum = this.omitKeys(point, ["xaxis", "yaxis", "data", "fullData" as keyof typeof point])
 
-            for (let key in point) {
-                if (key == "xaxis" || key == "yaxis" || key == "data" || key == "fullData") {
-                    continue;
-                }
-                newDatum[key] = point[key];
-            }
+            // let newDatum = {} as any;
+
+            // for (const key in point) {
+            //     if (key == "xaxis" || key == "yaxis" || key == "data" || key == "fullData") {
+            //         continue;
+            //     }
+            //     newDatum[key] = point[key];
+            // }
 
             newPoints.push(newDatum);
         });
